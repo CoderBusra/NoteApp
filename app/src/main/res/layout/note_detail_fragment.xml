@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+<data>
+    <variable
+        name="viewModel"
+        type="com.task.noteapp.ui.detail.NoteDetailFrgVM" />
+
+    <variable
+        name="data"
+        type="com.task.noteapp.data.model.NoteModel" />
+</data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.detail.NoteDetailFrg">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/edt_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:ems="10"
+            android:hint="Title"
+            android:text="@{data.title}"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            android:textColor="@color/teal_700"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Shopping List" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageView"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_marginTop="32dp"
+            bitmap="@{data.picture}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edt_title"
+           android:src="@drawable/note"
+           />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            tools:text="03/06"
+            android:text="@{data.createDate}"
+            android:textColor="@color/purple_700"
+            app:layout_constraintEnd_toEndOf="@+id/imageView"
+            app:layout_constraintStart_toStartOf="@+id/imageView"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/edt_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="Description"
+            android:text="@{data.description}"
+            android:inputType="textMultiLine"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3"
+            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/img_btn_save"
+            gone="@{data.id}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="36dp"
+            android:background="@drawable/ic_circle_rectangle"
+            android:src="@drawable/ic_check"
+            android:backgroundTint="@color/purple_700"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/img_btn_camera"
+            app:layout_constraintStart_toEndOf="@+id/img_btn_edit"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/img_btn_edit"
+            visibility="@{data.id}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="36dp"
+            android:background="@drawable/ic_circle_rectangle"
+            android:backgroundTint="@color/teal_700"
+            android:src="@drawable/ic_icons_gray_edit"
+            android:tint="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/img_btn_camera"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="UseAppTint,SpeakableTextPresentCheck" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/img_btn_camera"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="36dp"
+            android:background="@drawable/ic_circle_rectangle"
+            android:backgroundTint="@color/teal_700"
+            android:src="@drawable/ic_icn_camera_inactive"
+            android:tint="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/edt_description"
+            app:layout_constraintHorizontal_bias="0.589"
+            app:layout_constraintStart_toStartOf="@+id/edt_description"
+            tools:ignore="UseAppTint,SpeakableTextPresentCheck" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/img_btn_delete"
+            visibility="@{data.id}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="36dp"
+            android:background="@drawable/ic_circle_rectangle"
+            android:backgroundTint="@color/purple_700"
+            android:src="@android:drawable/ic_delete"
+            android:tint="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            tools:ignore="UseAppTint,SpeakableTextPresentCheck" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
